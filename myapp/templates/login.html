@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">  <!-- Adjusted width to be more narrow -->
+            <div class="login-form">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags}}" role="alert">
+                    {{message}}
+                  </div>
+                  {% endfor %}
+                  {% endif %}
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <h2 class="text-center">Log In</h2>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Username" name="username" required="required">
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="password" class="form-control" placeholder="Password" name="password" required="required">
+                    </div>
+                    <div class="form-group mt-3">
+                        <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                    </div>
+                </form>
+                <p class="text-center mt-3"><a href="{% url 'signup' %}">Create an Account</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
