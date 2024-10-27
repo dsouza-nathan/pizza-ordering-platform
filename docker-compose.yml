@@ -1,0 +1,9 @@
+services:
+  backend:
+    container_name: backend
+    build: .
+    restart: unless-stopped
+    ports:
+      - 8000:8000/tcp
+    env_file:
+      - .env
