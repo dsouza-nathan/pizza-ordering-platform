@@ -30,12 +30,18 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
+                    <!-- Cart Button -->
                     <li class="nav-item">
                         <a class="btn btn-light" href="{% url 'cart' %}">
                             <i class="fa-solid fa-cart-shopping"></i> {{ request.user.get_cart_count }}
                         </a>
                     </li>
+                    <!-- Logout Button -->
+                    <li class="nav-item">
+                        <a href="{% url 'logout' %}" class="btn btn-light ml-2">Logout</a>
+                    </li>
                 {% else %}
+                    <!-- Login and Sign Up for unauthenticated users -->
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{% url 'login' %}">Login</a>
                     </li>

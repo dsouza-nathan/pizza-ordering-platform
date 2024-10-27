@@ -120,3 +120,9 @@ def checkout(request):
         messages.error(request, "Your cart is empty or the order has already been placed.")
     
     return redirect('orders')  # Redirect to orders page after checkout
+
+##make a logout function which will logout the user and redirect to login page
+@login_required(login_url='login')
+def logout_user(request):
+    logout(request)
+    return redirect('login')
