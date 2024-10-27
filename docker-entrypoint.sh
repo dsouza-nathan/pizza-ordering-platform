@@ -9,7 +9,7 @@ python manage.py makemigrations --noinput || exit 1
 echo "Applying database migrations..."
 python manage.py migrate --noinput || exit 1
 
-echo "Creating superuser: $DJANGO_SUPERUSER_USERNAME..."
+echo "Creating superuser..."
 python manage.py createsuperuser --noinput
 
 python manage.py runserver 0.0.0.0:8000
