@@ -16,6 +16,7 @@ urlpatterns = [
     path('remove-from-cart/<str:cart_item_uid>/', views.remove_cart_items, name='remove_cart_items'),
     path('home/', views.home, name='home'),  # Optional: explicit home path for clarity
     path('admin/', admin.site.urls),
+     path('checkout/', views.checkout, name='checkout'),
 ]
 
 # Serve media files during development

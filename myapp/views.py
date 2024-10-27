@@ -108,3 +108,15 @@ def remove_cart_items(request, cart_item_uid):
 def menu(request):
     pizzas = Pizza.objects.all()
     return render(request, 'menu.html', {'pizzas': pizzas})
+
+@login_required(login_url='login')
+def checkout(request):
+    try:
+        cart = Cart.objects.get(user=request.user, is_paid=False)
+        cart.is_paid = True
+        cart.save()
+        messages.success(request, "Order placed successfully!")
+    except Cart.DoesNotExist:
+        messages.error(request, "Your cart is empty or the order has already been placed.")
+    
+    return redirect('orders')  # Redirect to orders page after checkout
